@@ -1,12 +1,12 @@
 // Import MySQL connection.
-var connection = require("../connection.js");
+var connection = require("./connection.js");
 
 // Create the methods that will execute the necessary MySQL commands in the controllers
 var orm = {
 	// Select all burgers
-	selectAll: function(tableInput, cb){
+	selectAll: function(cb){
 
-		var queryString = "SELECT * FROM " + tableInput + ";";
+		var queryString = "SELECT * FROM burgers;";
 
 		connection.query(queryString, function(err, result) {
 			if (err) {
@@ -32,7 +32,7 @@ var orm = {
 
         var queryString = "UPDATE burgers SET devoured=true WHERE id=?";
 
-        console.log(queryString);
+        // console.log(queryString);
         connection.query(queryString, [val], function(err, result) {
             if (err) {
                 throw err;
