@@ -1,0 +1,33 @@
+body {
+	background-color: green;
+}
+
+#headLogo {
+	height: 150px;
+}
+
+.jumbotron {
+	background-color: white;
+}
+
+.eatBurger, .ateBurger {
+	background-color: yellow;
+	color: black;
+	border-color: black;
+	margin: 10px;
+	width: 200px;
+}
+
+.createBurger {
+	padding-top: 30px;
+	text-align: center;
+}
+
+.topBar {
+	color: black;
+}
+
+.form-control {
+	margin-bottom: 20px;
+}
+

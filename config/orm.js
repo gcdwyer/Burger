@@ -1,46 +1,29 @@
-// Import MySQL connection.
-var connection = require("./connection.js");
+var connection = require('./connection.js');
 
-// Create the methods that will execute the necessary MySQL commands in the controllers
 var orm = {
-	// Select all burgers
+	// selects all burgers from DB
 	selectAll: function(cb){
-
-		var queryString = "SELECT * FROM burgers;";
-
+		var queryString = "SELECT * FROM burgers";
 		connection.query(queryString, function(err, result) {
-			if (err) {
-				throw err;
-			}
+			if (err) {throw err;}
 			cb(result);
 		});
 	},
-	// Insert a burger
+  	// inserts new burger into db
 	insertOne: function(val, cb){
-
 		var queryString = "INSERT INTO burgers (burger_name) VALUE (?)";
-
 		connection.query(queryString, [val], function(err, result){
-			if(err){
-				throw err;
-			}
+			if(err){throw err;}
 			cb(result);
 		});
 	},
-	// Update a burger
-	updateOne: function(val, cb) {
-
-        var queryString = "UPDATE burgers SET devoured=true WHERE id=?";
-
-        // console.log(queryString);
-        connection.query(queryString, [val], function(err, result) {
-            if (err) {
-                throw err;
-            }
-            cb(result);
-        });
-    }
+  	// boolean updates if burger is eaten
+	updateOne: function(val, cb){
+		var queryString = "UPDATE burgers SET devoured=true WHERE id=?";
+		connection.query(queryString, [val], function(err, result){
+			if(err){throw err;}
+			cb(result);
+		});
+	}
 }
-
-// export ORM object
 module.exports = orm;
